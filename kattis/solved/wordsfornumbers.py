@@ -1,4 +1,4 @@
-from sys import stdin
+from sys import stdin, stdout
 
 nums = {str(i) for i in range(100)}
 numDict = {'0':'zero',
