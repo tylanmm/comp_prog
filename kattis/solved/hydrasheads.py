@@ -16,7 +16,7 @@ while h and t:
 
         seen.add((h, t))
         
-        if t < 2: 
+        if t == 1: 
             q.append((h, t+1, s+1))
         if t >= 2:
             q.append((h+1, t-2, s+1))
