@@ -1,13 +1,10 @@
-n, h = map(int, input().split())
-num = [0]*(h+1)
-num[0] = n//2
-num[-1] = -n//2
-for _ in range(n//2):
-    lo = int(input())
-    num[lo] -= 1
+from sys import stdin, stdout
 
-    hi = int(input())
-    num[h-hi] += 1
+n, h = map(int, stdin.readline().split())
+num = [n//2] + [0]*(h-1) + [-n//2]
+for _ in range(n//2):
+    num[int(stdin.readline())] -= 1
+    num[~int(stdin.readline())] += 1
 
 lo = num[0]
 amt = 1
@@ -19,14 +16,5 @@ for i in range(1, h):
     elif num[i] == lo:
         amt += 1
 
-print(lo, amt)
-
-'''
- | | |
- | |
- | ||
- |  |
- || |
-  | |
-| | |
-'''
+stdout.write('%d %d\n' % (lo, amt))
+stdout.flush()
