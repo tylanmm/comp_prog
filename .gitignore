@@ -1,5 +1,6 @@
 .vscode
 *.class
-*.txt
+out.txt
+test.txt
 test.py
 highschool_comps
