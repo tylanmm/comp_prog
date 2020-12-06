@@ -9,22 +9,26 @@ public class template {
 
 class FastReader {
     private BufferedReader in;
-    private String[] line;
+    private String[] line = new String[0];
     private int pos = 0;
 
     public FastReader() throws IOException {
         in = new BufferedReader(new InputStreamReader(System.in));
     }
 
+    public void close() throws IOException {
+        in.close();
+    }
+
     public String[] nextLine() throws IOException {
-        line = in.nextLine().split(" ");
+        line = in.readLine().split(" ");
+        pos = 0;
         return line;
     }
 
     public String next() throws IOException {
         while (pos == line.length) {
             nextLine();
-            pos = 0;
         }
 
         return line[pos++];
