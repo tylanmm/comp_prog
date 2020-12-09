@@ -1,4 +1,4 @@
 import sys
 
 with open(sys.argv[1]) as f:
-    pass
+    data = f.read().split('\n')
