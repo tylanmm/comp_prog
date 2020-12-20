@@ -1,5 +1,4 @@
 import sys
-from time import time
 
 sys.setrecursionlimit(200000)
 
@@ -159,8 +158,8 @@ class TilePhoto:
             return '\n'.join(res)
         except Exception:
             return 'Could not construct photo'
-                            
-s = time()
+
+
 with open(sys.argv[1]) as f:
     raw = f.read().split('\n\n')
 
@@ -177,5 +176,3 @@ with open('monster.txt') as f:
     SEA_MONSTER = Tile(0, f.read().split('\n'))
 
 print(photo.get_roughness(SEA_MONSTER))
-e = time()
-print(f'Time elapsed: {e-s} seconds')
