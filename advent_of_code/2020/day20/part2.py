@@ -1,4 +1,5 @@
 import sys
+from time import time
 
 sys.setrecursionlimit(200000)
 
@@ -110,9 +111,6 @@ class TilePhoto:
         total_pound = grid.count('#')
         grid = grid.split('\n')
         
-        for r in grid:
-            print(r)
-        
         found_pounds = set()
 
         # for every possible orientation of the tile
@@ -121,7 +119,7 @@ class TilePhoto:
                 found_pounds.update(self.check_tile(tile, grid))
                 tile.rotate90()
             tile.flipv()
-        print(total_pound)
+        
         return total_pound - len(found_pounds)
 
     def check_tile(self, tile, grid):
@@ -162,7 +160,7 @@ class TilePhoto:
         except Exception:
             return 'Could not construct photo'
                             
-                        
+s = time()
 with open(sys.argv[1]) as f:
     raw = f.read().split('\n\n')
 
@@ -179,3 +177,5 @@ with open('monster.txt') as f:
     SEA_MONSTER = Tile(0, f.read().split('\n'))
 
 print(photo.get_roughness(SEA_MONSTER))
+e = time()
+print(f'Time elapsed: {e-s} seconds')
