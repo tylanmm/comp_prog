@@ -28,18 +28,20 @@ def concat(set1, set2):
 
 dp = {}
 def dfs(rule):
-    if rule == '8':
-        if '8' in dp:
-            return dp['8']
-        dp['8'] = dfs('42')
-        dp['8'] = dp['42'].union(concat(dp['42'], '8*'))
-        return dp['8']
-    if rule == '11':
-        if '11' in dp:
-            return dp['11']
-        temp = concat(dfs('42'), dfs('31'))
-        dp['11'] = temp.union(concat(concat(dp['42'], '8*'), dp['31']))
-        return dp['11']
+    if rule == '8' and '8' not in dp:
+        prev42 = dfs('42')
+        dp['8'] = dp['42']
+        for _ in range(3):
+            prev42 = concat(prev42, dp['42'])
+            dp['8'].update(prev42)
+    if rule == '11' and '11' not in dp:
+        prev42 = dfs('42')
+        prev31 = dfs('31')
+        dp['11'] = concat(prev42, prev31)
+        for _ in range(3):
+            prev42 = concat(prev42, dp['42'])
+            prev31 = concat(prev31, dp['31'])
+            dp['11'].update(concat(prev42, prev31))
     if rule in dp:
         return dp[rule]
 
@@ -56,8 +58,6 @@ def dfs(rule):
     return final
 
 dfs('0')
-print(dp['8'])
-print(dp['11'])
 total = 0
 for s in messages:
     total += s in dp['0']
