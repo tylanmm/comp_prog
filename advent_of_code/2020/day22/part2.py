@@ -1,6 +1,8 @@
 import sys
 from collections import deque
 
+game_amt = 1
+
 def play_game(p1, p2, game_num):
     # print(f'\n=== Game {game_num} ===')
     seen = set()
@@ -33,12 +35,14 @@ def play_round(p1, p2, seen, game_num, round_num):
     # print(f'Player 2 plays: {card2}')
     
     # play a subgame if there are enough cards
-    if p1[0] < len(p1) and p2[0] < len(p2):
+    if card1 <= len(p1) and card2 <= len(p2):
         newp1 = deque(list(p1)[:card1])
         newp2 = deque(list(p2)[:card2])
 
         # print('Playing a sub-game to determine the winner...')
-        winner = play_game(newp1, newp2, game_num+1)
+        global game_amt
+        game_amt += 1
+        winner = play_game(newp1, newp2, game_amt)
         # print(f'...anyway, back to game {game_num}.')
 
         # winner of the subgame determines winner of this round
@@ -53,10 +57,10 @@ def play_round(p1, p2, seen, game_num, round_num):
     
     # without enough cards, the round plays normally
     else:
-        if p1[0] > p2[0]:
+        if card1 > card2:
             # print(f'Player 1 wins round {round_num} of game {game_num}!')
             p1.append(card1)
-            p1.append(card1)
+            p1.append(card2)
         else:
             # print(f'Player 2 wins round {round_num} of game {game_num}!')
             p2.append(card2)
@@ -69,7 +73,7 @@ p1 = deque(map(int, p1.split('\n')[1:]))
 p2 = deque(map(int, p2.split('\n')[1:]))
 
 score = 0
-winner = play_game(p1, p2, 1)
+winner = play_game(p1, p2, game_amt)
 
 # print('\n== Post-game results ==')
 # print(f'Player 1\'s deck: {", ".join(map(str, p1))}')
@@ -82,4 +86,4 @@ else:
     while p2:
         score += len(p2) * p2.popleft()
 
-print(score)
+print(f'Winner\'s score: {score}')
