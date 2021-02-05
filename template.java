@@ -3,14 +3,14 @@ import java.util.*;
 
 public class template {
     public static void main(String[] args) throws IOException {
-
+        FastReader in = new FastReader();
+        
     }
 }
 
 class FastReader {
     private BufferedReader in;
-    private String[] line = new String[0];
-    private int pos = 0;
+    private StringTokenizer line;
 
     public FastReader() throws IOException {
         in = new BufferedReader(new InputStreamReader(System.in));
@@ -20,18 +20,19 @@ class FastReader {
         in.close();
     }
 
-    public String[] nextLine() throws IOException {
-        line = in.readLine().split(" ");
-        pos = 0;
-        return line;
+    public String nextLine() throws IOException {
+        return in.readLine();
+    }
+
+    private void buffer() throws IOException {
+        if (line == null || !line.hasMoreTokens()) {
+            line = new StringTokenizer(in.readLine());
+        }
     }
 
     public String next() throws IOException {
-        while (pos == line.length) {
-            nextLine();
-        }
-
-        return line[pos++];
+        buffer();
+        return line.nextToken();
     }
 
     public int nextInt() throws IOException {
