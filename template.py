@@ -6,7 +6,8 @@ def _i():
     return stdin.readline().strip()
 
 def _p(x, end='\n'):
-    stdout.write(str(x) + end)
+    stdout.write(str(x))
+    stdout.write(end)
 
 
 

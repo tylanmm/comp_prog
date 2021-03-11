@@ -20,7 +20,7 @@ class UFDS:
                 self.parent[x] = y
             else:
                 self.parent[y] = x
-                self.rank[x] += 1 if self.rank[x] == self.rank[y] else 0
+                self.rank[x] += self.rank[x] == self.rank[y]
 
 if __name__ == '__main__':
     ufds = UFDS(5)
