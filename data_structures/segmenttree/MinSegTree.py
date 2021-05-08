@@ -45,7 +45,7 @@ class MinSegTree:
         
         
 if __name__ == '__main__':
-    seg = SegTree([8, 0, 9, 3, 9, 5, 2, 7])
+    seg = MinSegTree([8, 0, 9, 3, 9, 5, 2, 7])
     print(seg.query(2, 5))
     seg.update(2, 1)
     print(seg.query(2, 5))
