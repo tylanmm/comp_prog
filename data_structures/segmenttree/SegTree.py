@@ -2,7 +2,7 @@
 # Modify the lines commented with "ADJUST FOR OTHER OPS" for other operations.
 # Additionally, modify line commented with "ADJUST BASE FOR OTHER OPS" with
 # the value that should be used when returning from an excluded interval.
-# Examples of segmentr trees modified in that way are in this folder.
+# Examples of segment trees modified in that way are in this folder.
 class SegTree:
 
     def __init__(self, nums):
