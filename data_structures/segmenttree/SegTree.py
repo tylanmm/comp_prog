@@ -16,6 +16,7 @@ class SegTree:
         
         # pad the tree
         tree = [0]*(2*n)
+        self.lazy = [0]*(2*n)
         for i in range(self.n):
             tree[n+i] = nums[i]
         
@@ -28,7 +29,7 @@ class SegTree:
         # if this node's range is completely in range, return its value
         if qL <= nL and nR <= qR:
             return self.t[node]
-        # if this node's range is completely disjoin, return "null"
+        # if this node's range is completely disjoint, return "null"
         if nR < qL or qR < nL:
             return 0  # ADJUST BASE FOR OTHER OPS
         

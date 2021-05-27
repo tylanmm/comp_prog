@@ -9,16 +9,20 @@ while n:
     files = [input() for _ in range(n)]
     hashes = [hash(f) for f in files]
 
-    unique = [True]*n
+    unique = set()
+    inSet = [True]*n
     collisions = 0
-    for i in range(n-1):
-        if not unique[i]: continue
-        for j in range(i+1, n):
-            if i != j and unique[j]:
-                if hashes[i] == hashes[j]:
-                    collisions += 1
-                    if files[i] == files[j]:
-                        unique[j] = False
+    for i in range(n):
+        if files[i] in unique:
+            inSet[i] = False
+            collisions += 1
+            continue
+        unique.add(files[i])
+        for j in range(i):
+            if hashes[i] == hashes[j] and inSet[j]:
+                collisions += 1
+                if files[j] == files[i]:
+                    inSet[i] = False
     
-    print(sum(unique), collisions)
+    print(len(unique), collisions)
     n = int(input())
