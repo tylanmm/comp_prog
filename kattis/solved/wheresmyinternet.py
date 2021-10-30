@@ -13,32 +13,7 @@ def dfs(u):
     for v in g[u]:
         if not visited[v]:
             dfs(v)
-'''
-class UFDS:
-    def __init__(self, n):
-        self.p = list(range(n))
-        self.rank = [1]*n
-    
-    def find(self, u):
-        if self.p[u] == u:
-            return u
-        
-        parent = self.find(self.p[u])
-        self.p[u] = parent
-        return parent
-    
-    def isSameSet(self, u, v):
-        return self.find(u) == self.find(v)
-    
-    def union(self, u, v):
-        x, y = self.find(u), self.find(v)
-        if x != y:
-            if self.rank[x] > self.rank[y]:
-                self.p[y] = x
-            else:
-                self.p[x] = y
-                self.rank[y] += self.rank[x] == self.rank[y]
-'''
+
 n, m = map(int, _i().split())
 g = [[] for _ in range(n)]
 for _ in range(m):
