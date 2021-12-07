@@ -1,4 +1,4 @@
-nums = sorted(list(map(int, input().split(','))))
+nums = list(map(int, input().split(',')))
 crabs = [0]*(max(nums)+1)
 for c in nums:
     crabs[c] += 1
