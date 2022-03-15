@@ -30,3 +30,5 @@ for _ in range(int(input())):
     solve(n, colors, hid)
     print(len(ways))
     print(' '.join(ways[0]))
+
+# recursion

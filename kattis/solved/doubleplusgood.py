@@ -23,3 +23,5 @@ for s in subs:
     possNums.add(sum(list(map(int, newNums))))
 
 print(len(possNums))
+
+# recursion

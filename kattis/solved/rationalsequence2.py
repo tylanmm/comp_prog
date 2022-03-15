@@ -20,3 +20,5 @@ for t in range(int(_i())):
     _p(k + ' ' + str(solve(num, den)))
 
 stdout.flush()
+
+# recursion
