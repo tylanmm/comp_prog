@@ -7,3 +7,4 @@ highschool_comps
 in.txt
 *.exe
 *.sh
+__pycache__
